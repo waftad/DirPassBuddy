@@ -1,0 +1,77 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+  <TabView selectedIndex="{{ selectedTab }}" class="h-full">
+    <!-- Home Tab -->
+    <TabViewItem title="Home" iconSource="res://home">
+      <GridLayout rows="auto, *">
+        <StackLayout row="0" class="p-4 bg-primary">
+          <Label text="{{ welcomeMessage }}" class="text-xl text-white" />
+          <Label text="{{ activePass }}" class="text-white" />
+        </StackLayout>
+        <ScrollView row="1">
+          <StackLayout class="p-4">
+            <Button text="Check In/Out" tap="{{ onCheckInOut }}" class="btn btn-primary m-2" />
+            <Button text="View Trail Map" tap="{{ onViewMap }}" class="btn btn-secondary m-2" />
+            <Button text="SOS Alert" tap="{{ onSosAlert }}" class="btn btn-danger m-2" />
+          </StackLayout>
+        </ScrollView>
+      </GridLayout>
+    </TabViewItem>
+
+    <!-- Store Tab -->
+    <TabViewItem title="Store" iconSource="res://store">
+      <GridLayout>
+        <ListView items="{{ products }}" class="list-group">
+          <ListView.itemTemplate>
+            <StackLayout class="list-group-item p-4">
+              <Image src="{{ image }}" class="h-40 w-full" />
+              <Label text="{{ name }}" class="text-lg font-bold" />
+              <Label text="{{ price }}" class="text-gray-600" />
+              <Button text="Add to Cart" tap="{{ $parent.onAddToCart }}" class="btn btn-primary" />
+            </StackLayout>
+          </ListView.itemTemplate>
+        </ListView>
+      </GridLayout>
+    </TabViewItem>
+
+    <!-- Classifieds Tab -->
+    <TabViewItem title="Classifieds" iconSource="res://market">
+      <GridLayout rows="auto, *">
+        <Button row="0" text="Post New Item" tap="{{ onPostClassified }}" class="btn btn-primary m-2" />
+        <ListView row="1" items="{{ classifieds }}" class="list-group">
+          <ListView.itemTemplate>
+            <StackLayout class="list-group-item p-4">
+              <Image src="{{ images[0] }}" class="h-40 w-full" />
+              <Label text="{{ title }}" class="text-lg font-bold" />
+              <Label text="{{ price }}" class="text-gray-600" />
+              <Label text="{{ seller.name }}" class="text-sm" />
+              <Label text="{{ '★'.repeat(seller.rating) }}" class="text-yellow-500" />
+            </StackLayout>
+          </ListView.itemTemplate>
+        </ListView>
+      </GridLayout>
+    </TabViewItem>
+
+    <!-- Profile Tab -->
+    <TabViewItem title="Profile" iconSource="res://profile">
+      <ScrollView>
+        <StackLayout class="p-4">
+          <Image src="{{ profileImage }}" class="rounded-full h-32 w-32 mx-auto" />
+          <Label text="{{ userName }}" class="text-2xl text-center" />
+          <Label text="{{ userEmail }}" class="text-gray-600 text-center" />
+          
+          <StackLayout class="mt-8">
+            <Label text="My Passes" class="text-xl font-bold" />
+            <ListView items="{{ userPasses }}" class="list-group">
+              <ListView.itemTemplate>
+                <Label text="{{ type + ' - Expires: ' + expiryDate }}" class="p-2" />
+              </ListView.itemTemplate>
+            </ListView>
+          </StackLayout>
+
+          <Button text="Purchase Pass" tap="{{ onPurchasePass }}" class="btn btn-primary m-2" />
+          <Button text="Sign Out" tap="{{ onSignOut }}" class="btn btn-secondary m-2" />
+        </StackLayout>
+      </ScrollView>
+    </TabViewItem>
+  </TabView>
+</Page>

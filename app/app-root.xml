@@ -1,0 +1,5 @@
+<Frame defaultPage="pages/auth/login">
+  <Frame.actionBar>
+    <ActionBar title="Mountain Bike Park" />
+  </Frame.actionBar>
+</Frame>
