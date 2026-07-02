@@ -1,38 +1,24 @@
 {
-  "name": "mountain-bike-park",
-  "main": "app/app.ts",
+  "name": "dirpassbuddy-midi-player",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
+  "description": "A PWA MIDI player: play MIDI from a local folder, queue songs, and change playback speed.",
+  "scripts": {
+    "setup": "node scripts/copy-assets.mjs",
+    "predev": "node scripts/copy-assets.mjs",
+    "dev": "vite",
+    "prebuild": "node scripts/copy-assets.mjs",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview"
+  },
   "dependencies": {
-    "@nativescript/core": "~8.8.0",
-    "@nativescript/geolocation": "^8.1.0",
-    "@nativescript/nfc": "^3.0.0",
-    "@nativescript/camera": "^5.1.0",
-    "@nativescript/local-notifications": "^6.1.0",
-    "@supabase/supabase-js": "^2.39.0",
-    "@nativescript/stripe": "^3.0.0",
-    "date-fns": "^2.30.0",
-    "@nativescript/mapbox": "^2.0.0"
+    "generaluser": "^1.47.1",
+    "spessasynth_lib": "^4.0.9"
   },
   "devDependencies": {
-    "@nativescript/android": "8.8.0",
-    "@nativescript/ios": "8.8.0",
-    "@nativescript/preview-cli": "1.0.13",
-    "@nativescript/stackblitz": "0.0.8",
-    "@nativescript/tailwind": "^2.1.0",
-    "@nativescript/types-minimal": "~8.8.0",
-    "@nativescript/webpack": "~5.0.0",
-    "tailwindcss": "~3.4.0",
-    "typescript": "~5.4.0",
-    "@nativescript/preview-devices": "0.7.1",
-    "setup-nativescript-stackblitz": "latest"
-  },
-  "scripts": {
-    "preview": "ns preview",
-    "setup": "setup-nativescript-stackblitz",
-    "start": "setup-nativescript-stackblitz && ns preview",
-    "android": "ns run android",
-    "ios": "ns run ios",
-    "clean": "ns clean"
+    "typescript": "~5.6.0",
+    "vite": "^6.0.0",
+    "vite-plugin-pwa": "^0.21.0"
   }
 }

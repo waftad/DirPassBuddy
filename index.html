@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#111827" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>DirPassBuddy MIDI Player</title>
+  </head>
+  <body>
+    <div id="app">
+      <header class="app-header">
+        <h1>🎹 MIDI Player</h1>
+        <div class="header-actions">
+          <button id="open-folder" class="btn">Open folder…</button>
+          <button id="change-soundfont" class="btn btn-ghost" title="Load a custom .sf2/.sf3 SoundFont">
+            SoundFont
+          </button>
+          <input id="folder-input" type="file" webkitdirectory multiple hidden />
+          <input id="soundfont-input" type="file" accept=".sf2,.sf3,.dls" hidden />
+        </div>
+      </header>
+
+      <main class="panes">
+        <section class="pane library-pane">
+          <div class="pane-head">
+            <h2>Library</h2>
+            <div class="pane-head-actions">
+              <span id="library-count" class="muted"></span>
+              <button id="add-all" class="btn btn-sm" disabled>Add all →</button>
+            </div>
+          </div>
+          <input id="library-filter" class="filter" type="search" placeholder="Filter files…" />
+          <ul id="library-list" class="list"></ul>
+          <p id="library-empty" class="empty">
+            Open a folder of <code>.mid</code> files to get started.
+          </p>
+        </section>
+
+        <section class="pane queue-pane">
+          <div class="pane-head">
+            <h2>Queue</h2>
+            <div class="pane-head-actions">
+              <span id="queue-count" class="muted"></span>
+              <button id="clear-queue" class="btn btn-sm" disabled>Clear</button>
+            </div>
+          </div>
+          <ul id="queue-list" class="list"></ul>
+          <p id="queue-empty" class="empty">Your queue is empty. Add songs from the library.</p>
+        </section>
+      </main>
+
+      <footer class="player-bar">
+        <div class="now-playing">
+          <div id="np-title" class="np-title">Nothing playing</div>
+          <div id="np-sub" class="np-sub muted"></div>
+        </div>
+
+        <div class="transport">
+          <div class="transport-buttons">
+            <button id="prev" class="icon-btn" title="Previous" disabled>⏮</button>
+            <button id="playpause" class="icon-btn play" title="Play" disabled>▶</button>
+            <button id="next" class="icon-btn" title="Next" disabled>⏭</button>
+          </div>
+          <div class="seek-row">
+            <span id="time-current" class="time">0:00</span>
+            <input id="seek" class="seek" type="range" min="0" max="1000" value="0" disabled />
+            <span id="time-total" class="time">0:00</span>
+          </div>
+        </div>
+
+        <div class="knobs">
+          <label class="knob">
+            <span class="knob-label">Speed <b id="speed-value">1.00×</b></span>
+            <input id="speed" type="range" min="0.25" max="2" step="0.05" value="1" />
+            <span class="presets">
+              <button class="chip" data-speed="0.5">0.5×</button>
+              <button class="chip" data-speed="1">1×</button>
+              <button class="chip" data-speed="1.5">1.5×</button>
+              <button class="chip" data-speed="2">2×</button>
+            </span>
+          </label>
+          <label class="knob">
+            <span class="knob-label">Volume</span>
+            <input id="volume" type="range" min="0" max="1" step="0.01" value="1" />
+          </label>
+        </div>
+      </footer>
+    </div>
+
+    <div id="toast" class="toast" hidden></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
