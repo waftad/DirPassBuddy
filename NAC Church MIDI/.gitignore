@@ -1,0 +1,8 @@
+node_modules
+dist
+dev-dist
+*.local
+
+# The default SoundFont is copied from the `generaluser` npm package on setup
+# (see scripts/copy-assets.mjs). It is large, so it is not committed to git.
+public/soundfont.sf2
